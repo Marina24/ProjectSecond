@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name_books">Книги</string>
+    <string name="app_name_genres_movie">Genres</string>
+    <string-array name="bookName">
+        <item>"Ларец графа Сен-Жермен"</item>
+        <item>"Тени солнечного города"</item>
+        <item>"Купель Офелии"</item>
+        <item>"Подозреваются в убийстве"</item>
+        <item>"Поезд", "Аквариум"</item>
+        <item>"Амнистия"</item>
+        <item>"Мандариновый июнь"</item>
+        <item>"Снеговик"</item>
+        <item>"Сердцем на Восток"</item>
+        <item>"Оперативный розыск"</item>
+        <item>"Властелин на час"</item>
+        <item>"Рассказы"</item>
+        <item>"Разбитые маски"</item>
+        <item>"Серебряный ангел"</item>
+        <item>"Отражение удара"</item>
+        <item>"Мятный шоколад"</item>
+        <item>"Дикие лошади"</item>
+        <item>"Напряжение"</item>
+        <item>"Дело фальшивого глаза"</item>
+    </string-array>
+
+    <string-array name="nameAuthor">
+        <item>"Романова Галина"</item>
+        <item>"Устинова Татьяна"</item>
+        <item>"Рой Олег"</item>
+        <item>"Малышева Анна"</item>
+        <item>"Шилова Юлия"</item>
+        <item>"Макдональд Грегори"</item>
+        <item>"Арсеньева Елена"</item>
+        <item>"Воронин Андрей"</item>
+        <item>"Абдуллаев Чингиз"</item>
+        <item>"Данилова Анна"</item>
+        <item>"Чейз Джеймс"</item>
+        <item>"Левитина Наталия"</item>
+        <item>"Соболева Лариса"</item>
+        <item>"Брикер Мария"</item>
+        <item>"Крамер Марина"</item>
+        <item>"Александрова Наталья"</item>
+        <item>"Володарская Ольга"</item>
+        <item>"Васина Нина"</item>
+        <item>"Островский Андрей"</item>
+        <item>"Гарднер Эрл"</item>
+    </string-array>
+
+    <string-array name="genres_movies">
+        <item>Adventure</item>
+        <item>Comedy</item>
+        <item>Cooking</item>
+        <item>Detective</item>
+        <item>Fantasy</item>
+        <item>Historical</item>
+        <item>Mystery</item>
+        <item>Romantic</item>
+        <item>Scientific</item>
+        <item>Western</item>
+    </string-array>
+</resources>
