@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_exp_view"
+        android:layout_marginLeft="@dimen/margin_exp_view"
+        android:layout_marginTop="@dimen/margen_child_view"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_group"
+        android:textColor="@color/primary_dark"/>
+</LinearLayout>

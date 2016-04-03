@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textChild"
+        android:textColor="@color/accent"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_exp_view"
+        android:textSize="@dimen/text_size_child"
+        android:textStyle="italic"
+        android:layout_marginLeft="@dimen/margen_child_view"
+        android:layout_marginTop="@dimen/margen_child_view"/>
+
+</LinearLayout>
