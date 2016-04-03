@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name_books">Книги</string>
     <string name="app_name_genres_movie">Genres</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_name_authors">Authors</string>
     <string-array name="bookName">
         <item>"Ларец графа Сен-Жермен"</item>
         <item>"Тени солнечного города"</item>
@@ -58,4 +60,38 @@
         <item>Scientific</item>
         <item>Western</item>
     </string-array>
+
+    <string-array name="group_authors">
+        <item>Дэн Браун</item>
+        <item>Агата Кристи</item>
+        <item>Лев Толстой</item>
+        <item>Стивен Кинг</item>
+    </string-array>
+
+    <string-array name="array_books_brauns">
+        <item>Код да Винчи</item>
+        <item>Ангелы и Демоны</item>
+        <item>Инферно</item>
+        <item>Утраченный символ</item>
+    </string-array>
+
+    <string-array name="array_books_agata_christie">
+        <item>Десять негритят</item>
+        <item>Печальный кипарис</item>
+        <item>Свидетель обвинения</item>
+    </string-array>
+
+    <string-array name="array_books_lev_tolstoy">
+        <item>Война и мир</item>
+        <item>Анна Каренина</item>
+        <item>Крейцерова соната</item>
+    </string-array>
+
+    <string-array name="array_books_stephen_king">
+        <item>Зеленая миля</item>
+        <item>Побег из Шоушенка</item>
+        <item>Мизери"</item>
+    </string-array>
+
+
 </resources>
