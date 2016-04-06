@@ -75,7 +75,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
                 book.setmTitle(itemLabel);
                 book.setmImageUrl(R.drawable.ic_book_all);
 
-                // Add an item to animals list
+                // Add an item to books list
                 books.add(position, book);
 
                 // Notify the adapter that an item inserted

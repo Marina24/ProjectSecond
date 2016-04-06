@@ -50,7 +50,7 @@ public class ExpandableListViewActivity extends AppCompatActivity {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v,
                                         int groupPosition, long id) {
-                Toast.makeText(getApplicationContext(), "Group " + groupPosition
+                Toast.makeText(getApplicationContext(), "Author " + myGroups.get(groupPosition).getGroupTitle()
                         + " is Clicked", Toast.LENGTH_SHORT).show();
                 return false;
             }});
@@ -61,8 +61,9 @@ public class ExpandableListViewActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                Toast.makeText(getApplicationContext(), "Group " + groupPosition + " Child "
-                        + childPosition + " is Clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Author " + myGroups.get(groupPosition).getGroupTitle()
+                        + " , book " + myGroups.get(groupPosition).getChildren().get(childPosition).getchildName()
+                        + " is Clicked", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });

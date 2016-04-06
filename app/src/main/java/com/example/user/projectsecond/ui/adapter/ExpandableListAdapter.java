@@ -13,6 +13,7 @@ import com.example.user.projectsecond.model.ChildData;
 import com.example.user.projectsecond.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
@@ -63,33 +64,48 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
+
+    public static class ViewHolder{
+        private HashMap<Integer, View> storedViews = new HashMap<>();
+
+        public ViewHolder(){}
+
+        public ViewHolder addView(View view){
+            int id = view.getId();
+            storedViews.put(id, view);
+            return this;
+        }
+        public View getView(int id){
+            return storedViews.get(id);
+        }
+    }
+
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView,
                              ViewGroup parent) {
 
-        View cv = null;
+        View row = null;
+        ViewHolder holder;
         final GroupData group = (GroupData) getGroup(groupPosition);
 
-        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
-            cv = (View)inflater.inflate(R.layout.group_view, parent, false);
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            row = (View)inflater.inflate(R.layout.group_view, parent, false);
+            TextView txtId = (TextView) row.findViewById(R.id.textGroup);
+            holder = new ViewHolder();
+            holder.addView(txtId);
+            row.setTag(holder);
+        } else {
+            row = (View) convertView;
+            holder = (ViewHolder) row.getTag();
         }
-        else
-        {
-            cv = (View) convertView;
-        }
-
-        //Get a reference to the group_item elements and set their values
-        TextView txtId = (TextView) cv.findViewById(R.id.textGroup);
 
         if (group != null) {
-
-            txtId.setText(Integer.toString(group.getGroupId()));
-            txtId.setText(group.getGroupTitle());
+            View myView = holder.getView(R.id.textGroup);
+            TextView textView = (TextView) myView;
+            textView.setText(group.getGroupTitle());
         }
-
-        return cv;
-
+        return row;
     }
 
     @Override
@@ -99,24 +115,24 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         //Get the child object at the specific groupPostion & childPosition
         final ChildData child = (ChildData) getChild(groupPosition,childPosition);
 
-        //Get the reference to the LayoutInflator to inflate the Child item layout
-        final LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ViewHolder holder;
 
         if (convertView == null) {
+            final LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.child_view, parent, false);
+            TextView txtId = (TextView) convertView.findViewById(R.id.textChild);
+            holder = new ViewHolder();
+            holder.addView(txtId);
+            convertView.setTag(holder);
+        }else {
+            holder = (ViewHolder) convertView.getTag();
         }
-
-
-        //Get a reference to the child_item elements and set their values
-        TextView txtId = (TextView) convertView.findViewById(R.id.textChild);
 
         if (child != null) {
 
-            int childId = child.getchildId();
-            txtId.setText(Integer.toString(childId));
-
-            String childName = child.getchildName();
-            txtId.setText(childName);
+            View myView = holder.getView(R.id.textChild);
+            TextView textView = (TextView) myView;
+            textView.setText(child.getchildName());
         }
 
         return convertView;

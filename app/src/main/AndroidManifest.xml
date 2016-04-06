@@ -24,17 +24,17 @@
         <activity android:name=".ui.RecyclerViewActivity"
             android:label="@string/app_name_books"
             android:theme="@style/CustomThemeBooks">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".ui.ExpandableListViewActivity"
             android:label="@string/app_name_authors"
             android:theme="@style/CustomThemeBooks">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
     </application>

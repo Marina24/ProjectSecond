@@ -14,13 +14,13 @@ import com.example.user.projectsecond.R;
  *
  */
 
-public class MyAdapter extends BaseAdapter {
+public class ListViewAdapter extends BaseAdapter {
     private final Context context;
     LayoutInflater inflater;
     private final String[] names;
     private final String[] namesAuthor;
 
-    public MyAdapter(Context context, String[] names, String[] namesAuthor) {
+    public ListViewAdapter(Context context, String[] names, String[] namesAuthor) {
         this.context = context;
         this.names = names;
         this.namesAuthor = namesAuthor;
