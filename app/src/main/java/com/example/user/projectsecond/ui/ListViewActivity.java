@@ -2,8 +2,8 @@ package com.example.user.projectsecond.ui;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,7 +17,8 @@ public class ListViewActivity extends ListActivity {
 
         setContentView(R.layout.activity_list_view);
 
-        // Использование собственного шаблона
+
+        // using own template
         setListAdapter(new ListViewAdapter(this, getResources().getStringArray(R.array.bookName),
                 getResources().getStringArray(R.array.nameAuthor)));
     }
@@ -27,7 +28,7 @@ public class ListViewActivity extends ListActivity {
         super.onListItemClick(l, v, position, id);
 
         Toast.makeText(getApplicationContext(),
-                "Press: "+ getResources().getStringArray(R.array.nameAuthor)[position],
+                "Press: " + getResources().getStringArray(R.array.nameAuthor)[position],
                 Toast.LENGTH_SHORT).show();
     }
 }

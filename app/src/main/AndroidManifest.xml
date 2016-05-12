@@ -5,34 +5,33 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:supportsRtl="true"
         android:label="@string/app_name_books"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".ui.ListViewActivity"
+        <activity
+            android:name=".ui.ListViewActivity"
             android:label="@string/app_name_books"
             android:theme="@style/CustomTheme">
 
         </activity>
-
-        <activity android:name=".ui.GridViewActivity"
+        <activity
+            android:name=".ui.GridViewActivity"
             android:label="@string/app_name_genres_movie"
             android:theme="@style/CuctomThemeGenresMovie">
 
         </activity>
-
-        <activity android:name=".ui.RecyclerViewActivity"
+        <activity
+            android:name=".ui.RecyclerViewActivity"
             android:label="@string/app_name_books"
             android:theme="@style/CustomThemeBooks">
 
         </activity>
-
-        <activity android:name=".ui.ExpandableListViewActivity"
+        <activity
+            android:name=".ui.ExpandableListViewActivity"
             android:label="@string/app_name_authors"
             android:theme="@style/CustomThemeBooks">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

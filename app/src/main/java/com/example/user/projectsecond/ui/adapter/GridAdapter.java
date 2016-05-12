@@ -12,20 +12,19 @@ import com.example.user.projectsecond.R;
 
 
 public class GridAdapter extends BaseAdapter {
-    private Context context;
-    LayoutInflater inflater;
-    String[] genresMovies;
+    private Context mContext;
+    LayoutInflater mInflater;
+    String[] mGenresMovies;
 
-    public Integer[] mImagesId = {R.drawable.ic_adventure_movie, R.drawable.ic_comedy_movie,
+    Integer[] mImagesId = {R.drawable.ic_adventure_movie, R.drawable.ic_comedy_movie,
             R.drawable.ic_cooking_movie, R.drawable.ic_detective_movie,
             R.drawable.ic_fantasy_movie, R.drawable.ic_historical_movie,
             R.drawable.ic_mystery_movie, R.drawable.ic_romantic_movie,
             R.drawable.ic_scientific_movie, R.drawable.ic_western_movie};
 
-    public GridAdapter(Context context, String[] genresMovies){
-        this.context = context;
-        this.genresMovies = genresMovies;
-        inflater = LayoutInflater.from(context);
+    public GridAdapter(Context context, String[] genresMovies) {
+        this.mContext = context;
+        this.mGenresMovies = genresMovies;
     }
 
     @Override
@@ -43,11 +42,11 @@ public class GridAdapter extends BaseAdapter {
         return position;
     }
 
-    static class ViewHolder{
+    static class ViewHolder {
         public ImageView imageView;
         public TextView textView;
 
-        public ViewHolder(View item){
+        public ViewHolder(View item) {
             imageView = (ImageView) item.findViewById(R.id.image_genre);
             textView = (TextView) item.findViewById(R.id.text_genre);
         }
@@ -59,15 +58,16 @@ public class GridAdapter extends BaseAdapter {
         ViewHolder holder;
 
         View cellView = convertView;
-        if(cellView == null){
-            cellView = inflater.inflate(R.layout.cell_grid, null, true);
+        if (cellView == null) {
+            mInflater = LayoutInflater.from(parent.getContext());
+            cellView = mInflater.inflate(R.layout.cell_grid, null, true);
             holder = new ViewHolder(cellView);
             cellView.setTag(holder);
-        }else{
+        } else {
             holder = (ViewHolder) cellView.getTag();
         }
         holder.imageView.setImageResource(mImagesId[position]);
-        holder.textView.setText(genresMovies[position]);
+        holder.textView.setText(mGenresMovies[position]);
 
         return cellView;
     }

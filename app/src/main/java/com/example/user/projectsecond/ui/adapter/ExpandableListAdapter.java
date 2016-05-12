@@ -9,18 +9,18 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.example.user.projectsecond.R;
-import com.example.user.projectsecond.model.ChildData;
-import com.example.user.projectsecond.model.GroupData;
+import com.example.user.projectsecond.model.ChildDataBooks;
+import com.example.user.projectsecond.model.GroupDataAuthors;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-    private ArrayList<GroupData> mGroups;
+    private ArrayList<GroupDataAuthors> mGroups;
     private Context mContext;
 
-    public ExpandableListAdapter (Context context,ArrayList<GroupData> groups){
+    public ExpandableListAdapter(Context context, ArrayList<GroupDataAuthors> groups) {
         mContext = context;
         mGroups = groups;
     }
@@ -33,7 +33,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public int getChildrenCount(int groupPosition) {
 
-        if(mGroups.get(groupPosition).getChildren() != null)
+        if (mGroups.get(groupPosition).getChildren() != null)
             return mGroups.get(groupPosition).getChildren().size();
         else
             return 0;
@@ -65,17 +65,19 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
 
-    public static class ViewHolder{
+    public static class ViewHolder {
         private HashMap<Integer, View> storedViews = new HashMap<>();
 
-        public ViewHolder(){}
+        public ViewHolder() {
+        }
 
-        public ViewHolder addView(View view){
+        public ViewHolder addView(View view) {
             int id = view.getId();
             storedViews.put(id, view);
             return this;
         }
-        public View getView(int id){
+
+        public View getView(int id) {
             return storedViews.get(id);
         }
     }
@@ -86,11 +88,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         View row = null;
         ViewHolder holder;
-        final GroupData group = (GroupData) getGroup(groupPosition);
+        final GroupDataAuthors group = (GroupDataAuthors) getGroup(groupPosition);
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = (View)inflater.inflate(R.layout.group_view, parent, false);
+            row = (View) inflater.inflate(R.layout.group_view, parent, false);
             TextView txtId = (TextView) row.findViewById(R.id.textGroup);
             holder = new ViewHolder();
             holder.addView(txtId);
@@ -113,7 +115,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                              View convertView, ViewGroup parent) {
 
         //Get the child object at the specific groupPostion & childPosition
-        final ChildData child = (ChildData) getChild(groupPosition,childPosition);
+        final ChildDataBooks child = (ChildDataBooks) getChild(groupPosition, childPosition);
 
         ViewHolder holder;
 
@@ -124,7 +126,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             holder = new ViewHolder();
             holder.addView(txtId);
             convertView.setTag(holder);
-        }else {
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
@@ -132,12 +134,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
             View myView = holder.getView(R.id.textChild);
             TextView textView = (TextView) myView;
-            textView.setText(child.getchildName());
+            textView.setText(child.getChildName());
         }
 
         return convertView;
 
     }
+
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;

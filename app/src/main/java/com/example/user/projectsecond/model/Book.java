@@ -1,45 +1,46 @@
 package com.example.user.projectsecond.model;
 
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
+
+import com.example.user.projectsecond.Const;
 import com.example.user.projectsecond.R;
+import com.example.user.projectsecond.ui.RecyclerViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
 
+    private int mCode;
     private String mTitle;
-    private int mImageUrl;
+    private Bitmap mImageUrl;
 
-    public static String[] bookNameArray = {"Нежные листья, ядовитые корни", "Сойка - пересмешница", "Перекресток миров: начало",
-            "50 оттенков свободы", "Код да Винчи", "Ангелы и демоны", "Инферно"};
-    public static int[] iconNameArray = {R.drawable.ic_book_one, R.drawable.ic_book_two, R.drawable.ic_book_three,
-            R.drawable.ic_book_four, R.drawable.ic_book_five, R.drawable.ic_book_six, R.drawable.ic_book_seven};
-
-    public static ArrayList<Book> booksList() {
-        ArrayList<Book> books = new ArrayList<>();
-        for (int i = 0; i < bookNameArray.length; i++) {
-            Book book = new Book();
-            book.setmTitle(bookNameArray[i]);
-            book.setmImageUrl(iconNameArray[i]);
-            books.add(book);
-        }
-        return books;
+    public int getCode() {
+        return mCode;
     }
 
-    public String getmTitle() {
+    public void setCode(int mCode) {
+        this.mCode = mCode;
+    }
+
+    public String getTitle() {
         return mTitle;
     }
 
-    public void setmTitle(String mTitle) {
+    public void setTitle(String mTitle) {
         this.mTitle = mTitle;
     }
 
-    public int getmImageUrl() {
+    public Bitmap getImageUrl() {
         return mImageUrl;
     }
 
-    public void setmImageUrl(int mImageUrl) {
+    public void setImageUrl(Bitmap mImageUrl) {
         this.mImageUrl = mImageUrl;
     }
 }

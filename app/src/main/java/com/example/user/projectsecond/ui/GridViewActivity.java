@@ -14,7 +14,7 @@ import com.example.user.projectsecond.ui.adapter.GridAdapter;
 public class GridViewActivity extends Activity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_grid_view);

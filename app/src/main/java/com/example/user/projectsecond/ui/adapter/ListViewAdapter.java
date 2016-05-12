@@ -10,31 +10,27 @@ import android.widget.TextView;
 
 import com.example.user.projectsecond.R;
 
-/**
- *
- */
 
 public class ListViewAdapter extends BaseAdapter {
-    private final Context context;
-    LayoutInflater inflater;
-    private final String[] names;
-    private final String[] namesAuthor;
+    private final Context mContext;
+    LayoutInflater mInflater;
+    private final String[] mNames;
+    private final String[] mNamesAuthor;
 
     public ListViewAdapter(Context context, String[] names, String[] namesAuthor) {
-        this.context = context;
-        this.names = names;
-        this.namesAuthor = namesAuthor;
-        inflater = LayoutInflater.from(this.context);
+        this.mContext = context;
+        this.mNames = names;
+        this.mNamesAuthor = namesAuthor;
     }
 
     @Override
     public int getCount() {
-        return names.length;
+        return mNames.length;
     }
 
     @Override
     public Object getItem(int position) {
-        return names[position];
+        return mNames[position];
     }
 
     @Override
@@ -50,7 +46,7 @@ public class ListViewAdapter extends BaseAdapter {
         public TextView textViewAuthor;
         public ImageView imageViewStar;
 
-        public ViewHolder(View item){
+        public ViewHolder(View item) {
             textView = (TextView) item.findViewById(R.id.firstLine);
             textViewAuthor = (TextView) item.findViewById(R.id.secondLine);
             imageView = (ImageView) item.findViewById(R.id.icon);
@@ -61,21 +57,21 @@ public class ListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // ViewHolder буферизирует оценку различных полей шаблона элемента
-
         ViewHolder holder;
         // Очищает сущетсвующий шаблон, если параметр задан
         // Работает только если базовый шаблон для всех классов один и тот же
         View rowView = convertView;
         if (rowView == null) {
-            rowView = inflater.inflate(R.layout.activity_list_view_item, null, true);
+            mInflater = LayoutInflater.from(parent.getContext());
+            rowView = mInflater.inflate(R.layout.activity_list_view_item, null, true);
             holder = new ViewHolder(rowView);
             rowView.setTag(holder);
         } else {
             holder = (ViewHolder) rowView.getTag();
         }
 
-        holder.textView.setText(names[position]);
-        holder.textViewAuthor.setText(namesAuthor[position]);
+        holder.textView.setText(mNames[position]);
+        holder.textViewAuthor.setText(mNamesAuthor[position]);
         holder.imageView.setImageResource(R.drawable.ic_launcher);
         holder.imageViewStar.setImageResource(R.drawable.ic_star);
 
