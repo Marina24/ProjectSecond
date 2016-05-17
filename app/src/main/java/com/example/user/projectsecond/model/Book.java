@@ -16,16 +16,23 @@ import java.util.List;
 
 public class Book {
 
-    private int mCode;
-    private String mTitle;
-    private Bitmap mImageUrl;
+     private String mTitle;
+    private int mImageUrl;
 
-    public int getCode() {
-        return mCode;
-    }
+    public static String[] bookNameArray = {"Нежные листья, ядовитые корни", "Сойка - пересмешница", "Перекресток миров: начало",
+            "50 оттенков свободы", "Код да Винчи", "Ангелы и демоны", "Инферно"};
+    public static int[] iconNameArray = {R.drawable.ic_book_one, R.drawable.ic_book_two, R.drawable.ic_book_three,
+            R.drawable.ic_book_four, R.drawable.ic_book_five, R.drawable.ic_book_six, R.drawable.ic_book_seven};
 
-    public void setCode(int mCode) {
-        this.mCode = mCode;
+    public static ArrayList<Book> booksList() {
+        ArrayList<Book> books = new ArrayList<>();
+        for (int i = 0; i < bookNameArray.length; i++) {
+            Book book = new Book();
+            book.setTitle(bookNameArray[i]);
+            book.setImageUrl(iconNameArray[i]);
+            books.add(book);
+        }
+        return books;
     }
 
     public String getTitle() {
@@ -36,11 +43,11 @@ public class Book {
         this.mTitle = mTitle;
     }
 
-    public Bitmap getImageUrl() {
+    public int getImageUrl() {
         return mImageUrl;
     }
 
-    public void setImageUrl(Bitmap mImageUrl) {
+    public void setImageUrl(int mImageUrl) {
         this.mImageUrl = mImageUrl;
     }
 }
