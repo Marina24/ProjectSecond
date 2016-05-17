@@ -1,17 +1,9 @@
 package com.example.user.projectsecond.model;
 
 
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
-
 import com.example.user.projectsecond.R;
-import com.example.user.projectsecond.ui.RecyclerViewActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Book {
 
