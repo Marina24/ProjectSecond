@@ -21,15 +21,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context mContext;
     private List<Book> mBooks;
-
-    // Конструктор
+    
     public RecyclerViewAdapter(Context context, List<Book> books) {
         this.mContext = context;
         this.mBooks = books;
     }
 
-    // класс view holder-а с помощью которого мы получаем ссылку на каждый элемент
-    // отдельного пункта списка
+    // View holder class with which we get a reference to each element
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public RelativeLayout mRelativeLayout;
         public ImageButton mRemoveButton;;
@@ -61,14 +59,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     //Replaces separate content view (called layout's manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position){
-        holder.txtViewTitle.setText(mBooks.get(position).getmTitle());
-        holder.imgViewIcon.setImageResource(mBooks.get(position).getmImageUrl());
+        holder.txtViewTitle.setText(mBooks.get(position).getTitle());
+        holder.imgViewIcon.setImageResource(mBooks.get(position).getImageUrl());
 
         // Set a click listener for TextView
         holder.txtViewTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String book = mBooks.get(position).getmTitle();
+                String book = mBooks.get(position).getTitle();
                 Toast.makeText(mContext,book,Toast.LENGTH_SHORT).show();
             }
         });
@@ -78,7 +76,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View view) {
                 // Get the clicked item label
-                String itemLabel = mBooks.get(position).getmTitle();
+                String itemLabel = mBooks.get(position).getTitle();
 
                 // Remove the item on remove/button click
                 mBooks.remove(position);
