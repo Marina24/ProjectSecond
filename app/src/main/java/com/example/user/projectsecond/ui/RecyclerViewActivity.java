@@ -1,23 +1,27 @@
 package com.example.user.projectsecond.ui;
 
 
-
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.user.projectsecond.R;
 import com.example.user.projectsecond.model.Book;
 import com.example.user.projectsecond.ui.adapter.RecyclerViewAdapter;
+import com.example.user.projectsecond.util.Utilities;
 
 import java.util.List;
 import java.util.Random;
@@ -25,44 +29,71 @@ import java.util.Random;
 public class RecyclerViewActivity extends AppCompatActivity {
 
     private Context mContext;
-    LinearLayout mLinearLayout;
+    private RelativeLayout mRelativeLayout;
     private Button mButtonAdd;
+    private EditText mEditSearch;
     private Random mRandom = new Random();
     private RecyclerView mRecyclerView;
+    private DatabaseHelper mDatabaseHelper;
     private StaggeredGridLayoutManager mStaggeredLayoutManager;
     private RecyclerViewAdapter mAdapter;
-    final List<Book> books = Book.booksList();
-    private Menu menu;
-    private boolean isListView;
-
+    private List<Book> mDataBooks;
+    private Menu mMenu;
+    private boolean mIsListView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_recycler_view);
-
         // Get the application context
         mContext = getApplicationContext();
 
-        isListView = true;
+        mIsListView = true;
 
-        //1. Get references on recyclerView
+        //1. Get references
         mButtonAdd = (Button) findViewById(R.id.btn_add);
-        mLinearLayout = (LinearLayout) findViewById(R.id.linear_layout);
+        mEditSearch = (EditText) findViewById(R.id.edit_search);
+        mRelativeLayout = (RelativeLayout) findViewById(R.id.relative_layout);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
         mStaggeredLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
 
-        // 2. Set layoutManger
+        mDatabaseHelper = new DatabaseHelper(RecyclerViewActivity.this);
+        // 2. Get all books from database
+        mDataBooks = mDatabaseHelper.getAllBooks();
+        // 3. Set layoutManger
         mRecyclerView.setLayoutManager(mStaggeredLayoutManager);
-
-        // 3. Create an adapter
-        mAdapter = new RecyclerViewAdapter(mContext, books);
-
-        // 4. Set adapter
+        // 4. Create an adapter
+        mAdapter = new RecyclerViewAdapter(mContext, mDataBooks);
+        // 5. Set adapter
         mRecyclerView.setAdapter(mAdapter);
 
+        searchBook();
+        addBook();
+    }
+
+    // method search book in data
+    public void searchBook() {
+        mEditSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String enteredNameBook = s.toString().toLowerCase();
+                final List<Book> filteredBooksList = Utilities.filter(mDataBooks, enteredNameBook);
+                mAdapter.setUpDateRecyclerViewData(filteredBooksList);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+    }
+
+
+    public void addBook() {
         // Set a click listener for add item button
         mButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,31 +103,34 @@ public class RecyclerViewActivity extends AppCompatActivity {
                 Book book = new Book();
                 String itemLabel = "Книга " + mRandom.nextInt(100);
 
-                book.setmTitle(itemLabel);
-                book.setmImageUrl(R.drawable.ic_book_all);
+                book.setTitle(itemLabel);
+                book.setImageUrl(BitmapFactory.decodeResource(getResources(), R.drawable.ic_book_all));
 
-                // Add an item to books list
-                books.add(position, book);
+                // Add an item to books list and database
+                mDatabaseHelper.createBook(book);
+                mDataBooks.add(position, book);
 
                 // Notify the adapter that an item inserted
                 mAdapter.notifyItemInserted(position);
 
-
                 // Scroll to newly added item position
                 mRecyclerView.scrollToPosition(position);
+
+                // Update adapter
+                mAdapter.setUpDateRecyclerViewData(mDataBooks);
 
                 // Show the added item label
                 Toast.makeText(mContext, "Added : " + itemLabel, Toast.LENGTH_SHORT).show();
             }
         });
-
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_grid_view, menu);
-        this.menu = menu;
+        this.mMenu = menu;
         return true;
     }
 
@@ -110,18 +144,19 @@ public class RecyclerViewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //View changed
     private void toggle() {
-        MenuItem item = menu.findItem(R.id.action_toggle);
-        if (isListView) {
+        MenuItem item = mMenu.findItem(R.id.action_toggle);
+        if (mIsListView) {
             mStaggeredLayoutManager.setSpanCount(2);
             item.setIcon(R.drawable.ic_action_list);
             item.setTitle("Show as list");
-            isListView = false;
+            mIsListView = false;
         } else {
             mStaggeredLayoutManager.setSpanCount(1);
             item.setIcon(R.drawable.ic_action_grid);
             item.setTitle("Show as grid");
-            isListView = true;
+            mIsListView = true;
         }
     }
 }
