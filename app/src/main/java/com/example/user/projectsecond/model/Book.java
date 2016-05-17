@@ -7,7 +7,6 @@ import android.graphics.BitmapFactory;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 
-import com.example.user.projectsecond.Const;
 import com.example.user.projectsecond.R;
 import com.example.user.projectsecond.ui.RecyclerViewActivity;
 
