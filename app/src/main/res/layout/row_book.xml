@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/booksCard"
     android:layout_width="match_parent"
@@ -16,10 +15,10 @@
         android:background="?android:selectableItemBackground">
 
         <ImageView
-        android:id="@+id/img_books"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_img_books"
-        android:scaleType="centerCrop" />
+            android:id="@+id/img_books"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_img_books"
+            android:scaleType="centerCrop" />
 
         <ImageButton
             android:id="@+id/btn_img_remove"
@@ -31,7 +30,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/ic_delete"/>
+            android:background="@drawable/ic_delete" />
 
         <TextView
             android:id="@+id/txt_book_name"
@@ -44,7 +43,7 @@
             android:layout_below="@id/img_books"
             android:layout_toLeftOf="@id/btn_img_remove"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/primary_dark"/>
+            android:textColor="@color/primary_dark" />
 
 
     </RelativeLayout>

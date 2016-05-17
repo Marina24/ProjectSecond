@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linear_layout"
-    android:orientation="vertical"
+    android:id="@+id/relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
-    tools:context=".api.RecyclerViewActivity">
+    android:orientation="vertical"
+    tools:context=".ui.RecyclerViewActivity">
+
+    <EditText
+        android:id="@+id/edit_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/img_btn_del_mergin"
+        android:layout_marginRight="@dimen/img_btn_del_mergin"
+        android:drawableRight="@drawable/ic_search" />
 
     <Button
         android:id="@+id/btn_add"
         android:layout_width="@dimen/floating_button_size"
         android:layout_height="@dimen/floating_button_size"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/edit_search"
         android:layout_marginTop="@dimen/img_btn_del_mergin"
         android:background="@drawable/ic_add" />
 
-    <android.support.v7.widget.RecyclerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".api.RecyclerViewActivity"/>
+        android:layout_below="@id/btn_add"
+        tools:context=".api.RecyclerViewActivity" />
 
-</LinearLayout>
+</RelativeLayout>
 
