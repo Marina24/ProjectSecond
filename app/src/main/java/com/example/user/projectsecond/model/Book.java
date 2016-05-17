@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Book {
 
-     private String mTitle;
+    private String mTitle;
     private int mImageUrl;
 
     public static String[] bookNameArray = {"Нежные листья, ядовитые корни", "Сойка - пересмешница", "Перекресток миров: начало",
