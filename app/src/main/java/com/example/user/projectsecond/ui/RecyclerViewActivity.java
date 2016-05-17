@@ -72,8 +72,8 @@ public class RecyclerViewActivity extends AppCompatActivity {
                 Book book = new Book();
                 String itemLabel = "Книга " + mRandom.nextInt(100);
 
-                book.setmTitle(itemLabel);
-                book.setmImageUrl(R.drawable.ic_book_all);
+                book.setTitle(itemLabel);
+                book.setImageUrl(R.drawable.ic_book_all);
 
                 // Add an item to books list
                 books.add(position, book);
